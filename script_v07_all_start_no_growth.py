@@ -1,23 +1,6 @@
 #!/usr/bin/env python3
 
-import json
-import os
-import time
-import requests
-from datetime import datetime,timezone
-from dateutil.relativedelta import relativedelta
-from dateutil import parser
-import copy
-from collections import defaultdict
-import math
-import random
-from urllib3.util.retry import Retry
-from requests.adapters import HTTPAdapter
 from .helpers import *
-
-
-########################################################################################
-# finally calling the functions
 
 category_list_indian_politics = ['Category:FA-Class_Indian_politics_articles',
 								'Category:A-Class_Indian_politics_articles',
@@ -112,7 +95,19 @@ loaded_page_id_dict['pages']['nonpolitics'] = pages_dict_nonpolitics
 with open(page_id_dict_file_path, 'w', encoding='utf-8') as filex:
 	json.dump(loaded_page_id_dict, filex, ensure_ascii=False)
 
-# /home/ubuntu/work/wikipedia_sanghis/script_v05_all_start_no_growth.py
+
+# make csvs
+create_csvs('compiled_stats_all_start_no_growth_politics.json', 'politics', utc_time_now)
+create_csvs('compiled_stats_all_start_no_growth_nonpolitics.json', 'nonpolitics', utc_time_now)
+
+# make charts
+create_charts_for_twitter()
+
+# tweet out charts
+send_tweets()
+
+# send email
+send_email()
 
 # line for cron and at jobs
-	# cd /home/ubuntu/work/wikipedia_sanghis && /usr/bin/python3 ./script_v06_all_start_no_growth.py >> /home/ubuntu/work/wikipedia_sanghis/logs/`date +\%Y-\%m-\%d-\%H:\%M`_script_v06_all_start_no_growth.log 2>&1
+	# cd /home/ubuntu/work/wikipedia_sanghis && /usr/bin/python3 ./script_v07_all_start_no_growth.py >> /home/ubuntu/work/wikipedia_sanghis/logs/`date +\%Y-\%m-\%d-\%H:\%M`_script_v07_all_start_no_growth.log 2>&1
