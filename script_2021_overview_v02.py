@@ -19,8 +19,7 @@ create_monthly_stats_csvs()
 # hate that I had to this but added a column to a csv by hand here
 	#was marking out which entries have nothing to do with politics, movies, TV and sports
 
-# # now for creation of graphics from these csvs
-# # 	graphics for 2021 overview
-# create_charts_top_10()
-# create_charts_monthly_top_titles()
-# create_charts_monthly_top_titles_no_movies_tv_sports()
+# now for creation of 2021 overview graphics from these csvs
+create_charts_top_10()
+create_charts_monthly_top_titles()
+create_charts_monthly_top_titles_no_movies_tv_sports()

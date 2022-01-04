@@ -1732,17 +1732,13 @@ def create_monday_tweet_time_float_value():
 ##################################################################################################
 # calculate date and time on tuesday morning for sending tweets 
 
-def create_tuesday_tweet_time_float_value():
-	next_week_tuesday_date_object = date.today() + relativedelta(weekday=TU(+1))
-	next_week_tuesday_date_string = next_week_tuesday_date_object.strftime('%Y-%m-%d')
-	# tweet_time_string = next_week_tuesday_date_string +'T09:30:00+0530'
-	tweet_time_string = next_week_tuesday_date_string +'T09:50:00+0530'
-	tweet_time_datetime = parser.parse(tweet_time_string)
-	# tweet_time_struct = tweet_time_datetime.timetuple()
-	# tweet_time_float = time.mktime(tweet_time_struct)
-	# be careful, timetuple does not store utc offset, use .timestamp to get unix timestamp
-	tweet_time_float = tweet_time_datetime.timestamp()
-	return tweet_time_float
+# def create_tuesday_tweet_time_float_value():
+# 	next_week_tuesday_date_object = date.today() + relativedelta(weekday=TU(+1))
+# 	next_week_tuesday_date_string = next_week_tuesday_date_object.strftime('%Y-%m-%d')
+# 	tweet_time_string = next_week_tuesday_date_string +'T09:30:00+0530'
+# 	tweet_time_datetime = parser.parse(tweet_time_string)
+# 	tweet_time_float = tweet_time_datetime.timestamp()
+# 	return tweet_time_float
 
 ##################################################################################################
 # this function is for sending out tweets
