@@ -1141,7 +1141,8 @@ def create_charts_monthly_top_titles():
 						x=0,
 						xanchor = 'left',
 						yref="paper",
-						y=0.05, 
+						# y=0.05,
+						y=0.03, 
 						yanchor = 'middle',
 						showarrow=False,
 						align = 'left',
@@ -1152,25 +1153,31 @@ def create_charts_monthly_top_titles():
 			title_substring = '(Non-Politics Pages)'
 		fig.update_layout(
 			width = 800,
-			height = 1067, # for 3:4
+			# height = 1067, # for 3:4
+			height = 1400, # for 3:4
 			margin=dict(
 						l=10,
 						r=10,
 						b=0,
-						t=20,
+						# t=20,
+						t=80,
 						pad=0
 					),
 			title = dict(
-					text = '<b>Most abused* Indian<br>pages on Wikipedia for<br>every month of 2021<br>' + title_substring + '<b>',
+					# text = '<b>Most abused* Indian<br>pages on Wikipedia for<br>every month of 2021<br>' + title_substring + '<b>',
+					text = '<b>Most abused* Indian pages on Wikipedia for every<br>month of 2021' + title_substring + '<b>',
+
 					font = dict(
 							color=highlight_color, 
 							size=chart_title_font_size,
 							family=font_family,
 							),
-					x = 0.03,
+					# x = 0.03,
+					x = 0.02,
 					xanchor = 'left',
 					xref = 'container', #the option paper is just for the plotting area, container is for the whole plot
-					y = 0.95,
+					# y = 0.95,
+					y = 0.97,
 					yanchor = 'top',
 					yref = 'container', #not using container here
 					),
@@ -1302,7 +1309,8 @@ def create_charts_monthly_top_titles_no_movies_tv_sports():
 						x=0,
 						xanchor = 'left',
 						yref="paper",
-						y=0.05, 
+						# y=0.05,
+						y=0.03, 
 						yanchor = 'middle',
 						showarrow=False,
 						align = 'left',
@@ -1313,25 +1321,29 @@ def create_charts_monthly_top_titles_no_movies_tv_sports():
 			title_substring = '(Outside politics, movies, tv & sports)'
 		fig.update_layout(
 			width = 800,
-			height = 1067, # for 3:4
+			# height = 1067, # for 3:4
+			height = 1400,
 			margin=dict(
 						l=10,
 						r=10,
 						b=0,
-						t=20,
+						t=80,
 						pad=0
 					),
 			title = dict(
-					text = '<b>Most abused* Indian<br>pages on Wikipedia for<br>every month of 2021<br>' + title_substring + '<b>',
+					# text = '<b>Most abused* Indian<br>pages on Wikipedia for<br>every month of 2021<br>' + title_substring + '<b>',
+					text = '<b>Most abused* Indian pages on Wikipedia for every<br>month of 2021 ' + title_substring + '<b>',
 					font = dict(
 							color=highlight_color, 
 							size=chart_title_font_size,
 							family=font_family,
 							),
-					x = 0.03,
+					# x = 0.03,
+					x = 0.02,
 					xanchor = 'left',
 					xref = 'container', #the option paper is just for the plotting area, container is for the whole plot
-					y = 0.95,
+					# y = 0.95,
+					y = 0.97,
 					yanchor = 'top',
 					yref = 'container', #not using container here
 					),
