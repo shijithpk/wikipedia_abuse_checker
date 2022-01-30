@@ -323,6 +323,12 @@ def update_json_of_page_ids(time_string):
 			del new_category_members_nonpolitics[page_id]
 
 	pages_dict_nonpolitics.update(new_category_members_nonpolitics)
+	
+	politics_keys = pages_dict_politics.keys()
+	nonpolitics_keys = pages_dict_nonpolitics.keys()
+	common_keys = list(set(politics_keys) & set(nonpolitics_keys))
+	for key in common_keys:
+		pages_dict_nonpolitics.pop(key, None)
 
 	loaded_page_id_dict['pages']['politics'] = pages_dict_politics
 	loaded_page_id_dict['pages']['nonpolitics'] = pages_dict_nonpolitics 
