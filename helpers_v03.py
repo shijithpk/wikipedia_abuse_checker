@@ -527,7 +527,6 @@ def grab_page_histories_whole_year(start_time_string, page_histories_directory):
 		json.dump(loaded_page_id_dict, filex, ensure_ascii=False)
 
 
-###########################################################################################
 
 #########################################################
 # code to get aggregate stats for graphics
