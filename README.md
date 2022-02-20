@@ -17,4 +17,4 @@ The whole process is essentially these steps:
 * Send out tweets containing these charts 
 
 ### Suggestions, feedback
-You can contact me at abuse_checker@shijith.com or at this Twitter handle [@abuse_checker](https://twitter.com/abuse_checker).
+You can contact me at mail@shijith.com or at this Twitter handle [@abuse_checker](https://twitter.com/abuse_checker).
