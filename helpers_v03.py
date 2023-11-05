@@ -81,13 +81,14 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # this is for whenever twitter's api v2 introduces endpoint for uploading images, then we'll switch to v2 from v1.1
-# client = tweepy.Client(bearer_token=BEARER_TOKEN,
-# 						consumer_key=CONSUMER_KEY,
-# 						consumer_secret=CONSUMER_SECRET, 
-# 						access_token=ACCESS_TOKEN, 
-# 						access_token_secret=ACCESS_TOKEN_SECRET,
-# 						wait_on_rate_limit=True
-# 						)
+client = tweepy.Client(
+						# bearer_token=BEARER_TOKEN,
+						consumer_key=CONSUMER_KEY,
+						consumer_secret=CONSUMER_SECRET, 
+						access_token=ACCESS_TOKEN, 
+						access_token_secret=ACCESS_TOKEN_SECRET,
+						# wait_on_rate_limit=True
+						)
 
 ###################################################################
 #this part is about creating a list of bot ids
@@ -1805,15 +1806,26 @@ def send_tweets(start_time):
 	second_tweet_image_upload_response = api.media_upload(second_tweet_image_path)
 	second_tweet_media_id_string = second_tweet_image_upload_response.media_id_string
 	
-	first_tweet_update_status = api.update_status(status=first_tweet_text, media_ids = [first_tweet_media_id_string])
+	# first_tweet_update_status = api.update_status(status=first_tweet_text, media_ids = [first_tweet_media_id_string])
+	first_tweet_update_status = client.create_tweet(text=first_tweet_text, media_ids = [first_tweet_media_id_string])
 
-	first_tweet_update_status_id_string = first_tweet_update_status._json['id_str']
+	# first_tweet_update_status_id_string = first_tweet_update_status._json['id_str']
+	first_tweet_update_status_id_string = first_tweet_update_status.data['id']
 
 	time.sleep(2)
-	second_tweet_update_status = api.update_status(status=second_tweet_text, 
-												media_ids = [second_tweet_media_id_string],
-												in_reply_to_status_id = first_tweet_update_status_id_string,
-												auto_populate_reply_metadata=True)
+	# second_tweet_update_status = api.update_status(status=second_tweet_text, 
+	# 											media_ids = [second_tweet_media_id_string],
+	# 											in_reply_to_status_id = first_tweet_update_status_id_string,
+	# 											auto_populate_reply_metadata=True)
+	second_tweet_update_status = client.create_tweet(
+											text=second_tweet_text, 
+											media_ids = [second_tweet_media_id_string],
+											in_reply_to_tweet_id = first_tweet_update_status_id_string
+											)
 
-	time.sleep(10800) # wait 3 hours, then do retweet
-	api.retweet(first_tweet_update_status_id_string)
+
+	# time.sleep(10800) # wait 3 hours, then do retweet
+	# api.retweet(first_tweet_update_status_id_string)
+
+	## the line below should be the replacement for api.retweet, but it's not working for some reason
+	# client.retweet(tweet_id=first_tweet_update_status_id_string, user_auth=True)
