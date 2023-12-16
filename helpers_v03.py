@@ -1572,7 +1572,7 @@ def create_charts_for_twitter(start_time):
 			subcategory_df_raw = pd.read_csv(csv_path)
 			subcategory_df_raw['rank'] = range(1,1+len(subcategory_df_raw))
 			subcategory_df_raw['truncated_page_title'] = subcategory_df_raw['page_title'].apply(
-				lambda x: x if len(x) <= 50 else (x[0:47] + '...')
+				lambda x: x if len(x) <= 45 else (x[0:42] + '...')
 			)
 
 			subcategory_df_raw['combined'] = subcategory_df_raw['rank'].astype(str) + '. ' +subcategory_df_raw['truncated_page_title'] +' (' +	subcategory_df_raw.iloc[:, 1].astype(str) + ')'
